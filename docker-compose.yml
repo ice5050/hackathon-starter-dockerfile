@@ -1,0 +1,16 @@
+version: '2'
+services:
+  hackathon:
+    build: .
+    command: node app.js --port 80
+    ports:
+      - "80:80"
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_URI=xxx
+  mongo:
+    restart: always
+    image: sameersbn/mongodb:latest
+    ports:
+      - "27017:27017"
